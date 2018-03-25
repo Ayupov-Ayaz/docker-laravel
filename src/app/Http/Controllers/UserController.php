@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    /**
+     * UserController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function users()
     {
         return view('users.index', [

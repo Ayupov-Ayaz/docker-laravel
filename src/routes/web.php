@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::auth();
+//Route::auth();
 
 // Tasks controllers
 Route::get('/tasks/all', 'TaskController@getAll')->name('all_tasks');
