@@ -8,7 +8,7 @@
  <!-- Отображение ошибок проверки ввода -->
 @include('common.errors')
 
-@if(count($users) > 0)
+@if( isset($users))
     <div class="panel panel-default">
 
         <div class="panel-body">
@@ -31,6 +31,14 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+@endif
+
+@if(isset($user))
+    <div class="panel paned-default">
+        <div class="panel-body">
+            {{$user->email}}
         </div>
     </div>
 @endif

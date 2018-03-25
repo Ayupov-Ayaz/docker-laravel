@@ -23,10 +23,10 @@ class UserController extends Controller
         ]);
     }
 
-    public function getUser(int $id)
+    public function getUser(User $user)
     {
         return view('users.index', [
-            'user' => User::find($id)
+            'user' => $user
         ]);
     }
 }

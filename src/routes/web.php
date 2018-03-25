@@ -35,4 +35,4 @@ Route::delete('/task/{taskId}', 'TaskController@destroy')
 
 Route::get('/users', 'UserController@users')->name('all_users');
 
-Route::get('/user/{id}', 'UserController@getUser');
+Route::get('/user/{user}', 'UserController@getUser');
