@@ -26,6 +26,17 @@ class TaskController extends Controller
     }
 
     /**
+     * Получение всех задач
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getAll()
+    {
+        return view('tasks.index', [
+            'tasks' => Task::all()
+        ]);
+    }
+
+    /**
      * Получить задачи текущего пользователя
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
