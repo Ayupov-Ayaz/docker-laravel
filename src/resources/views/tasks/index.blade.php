@@ -6,7 +6,7 @@
 
     <div class="panel-body">
         <!-- Отображение ошибок проверки ввода -->
-    {{--@include('common.errors')--}}
+    @include('common.errors')
 
     <!-- Форма новой задачи -->
         <form action="{{ url('task') }}" method="POST" class="form-horizontal">
