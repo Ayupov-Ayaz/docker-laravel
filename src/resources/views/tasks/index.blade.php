@@ -56,8 +56,14 @@
                                 </td>
 
                                 <td>
-                                    <div><a href="#">Х</a></div>
-                                    {{--TODO: delete task button--}}
+                                    <form action="{{url('task/' . $task->id) }}" method="POST">
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
+
+                                        <button type="submit" id="delete-task-{{$task->id}}" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash">удалить</i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
