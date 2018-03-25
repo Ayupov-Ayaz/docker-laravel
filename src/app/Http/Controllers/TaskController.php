@@ -2,25 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
 
+    protected $tasks;
+
     /**
      * TaskController constructor.
+     * @param $tasks - Экземпляр репозитория с задачами
      */
-    public function __construct()
+    public function __construct(TaskRepository $tasks)
     {
         $this->middleware('auth');
+
+        $this->tasks = $tasks;
+
     }
 
+    /**
+     * Получить задачи текущего пользователя
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request)
     {
-        $tasks = $request->user()->tasks()->get();
-
         return view('tasks.index',[
-            'tasks' => $tasks,
+            'tasks' => $this->tasks->forUser($request->user()),
             ]);
     }
 
