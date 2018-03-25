@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Task;
 use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
 
@@ -47,8 +48,13 @@ class TaskController extends Controller
         return redirect('/tasks');
     }
 
-    public function destroy(int $taskId)
+    public function destroy(Request $request, int $taskId)
     {
+        $task = Task::find($taskId);
+//        $this->authorize('destroy', $task); // TODO: разобраться, почему не работает
 
+        $task->delete();
+
+        return redirect('/tasks');
     }
 }
