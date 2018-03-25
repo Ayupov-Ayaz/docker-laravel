@@ -20,9 +20,11 @@ class TaskController extends Controller
         return view('tasks.index');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:191'
+        ]);
     }
 
     public function destroy(int $taskId)
