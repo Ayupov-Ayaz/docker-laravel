@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Entities\Task;
 use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -53,8 +54,9 @@ class TaskController extends Controller
         $task = Task::find($taskId);
 //        $this->authorize('destroy', $task); // TODO: разобраться, почему не работает
 
-        $task->delete();
-
+        if(Gate::allows('is-your-task', $task)) {
+            $task->delete();
+        }
         return redirect('/tasks');
     }
 }
