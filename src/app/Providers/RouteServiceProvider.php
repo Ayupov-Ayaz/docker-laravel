@@ -25,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::pattern('id', '[0-9]+');
 
+        Route::model('user', 'App\Entities\User');
+
+        Route::model('task', 'App\Entities\Task');
+
         parent::boot();
     }
 
