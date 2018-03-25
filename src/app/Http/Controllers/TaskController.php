@@ -25,6 +25,12 @@ class TaskController extends Controller
         $this->validate($request, [
             'name' => 'required|max:191'
         ]);
+
+        $request->user()->tasks()->create([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/tasks');
     }
 
     public function destroy(int $taskId)
