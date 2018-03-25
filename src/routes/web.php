@@ -31,3 +31,8 @@ Route::post('/task', 'TaskController@store')->name('create_task');
 Route::delete('/task/{taskId}', 'TaskController@destroy')
        ->name('delete_task')
        ->where(['taskId' => '[0-9]+']);
+
+
+Route::get('/users', 'UserController@users')->name('all_users');
+
+Route::get('/user/{id}', 'UserController@getUser');
