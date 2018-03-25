@@ -32,5 +32,38 @@
         </form>
     </div>
 
-    <!-- TODO: Текущие задачи -->
+    @if(count($tasks) > 0)
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Текущая задача
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-striped task-table">
+                    {{--Заголовок таблицы--}}
+                    <thead>
+                        <th>Задача</th>
+                        <th>&nbsp;</th>
+                    </thead>
+
+                    {{--Тело таблицы--}}
+                    <tbody>
+                        @foreach($tasks as $task)
+                            <tr>
+                                {{--Имя задачи--}}
+                                <td class="table-text">
+                                    <div>{{$task->name}}</div>
+                                </td>
+
+                                <td>
+                                    <div><a href="#">Х</a></div>
+                                    {{--TODO: delete task button--}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 @endsection
